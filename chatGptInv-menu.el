@@ -107,10 +107,10 @@
      b:chatGpt:menu:select
      nil
      (bx:menu:panelAndHelp|define
-      "/bisos/git/auth/bxRepos/blee-binders/bisos-core/sync/_nodeBase_"
+      "/bisos/git/auth/bxRepos/blee-binders/non-libre-halaal/ChatGPT/_nodeBase_"
       $thisFuncName
-      (intern (symbol-name (gensym))))
-     (s-- 8))
+      nil)
+     (s-- 7))
     'b:chatGpt:menu:select
     ))
 
