@@ -49,14 +49,56 @@
 	 :active t
 	 :visible t
 	 ]
-
 	 [
-	  "ChatGPT Explain Region"
-	  (call-interactively 'chatgpt-explain-region)
-	  :help "asks ChatGPT to explain whats wrong with Region."
+	  "ChatGPT Rewrite Region (text)"
+	  (call-interactively 'chatgpt-rewrite-region)
+	  :help "asks ChatGPT to rewrite the region."
 	  :active t
 	  :visible t
 	  ]
+	 [
+	  "ChatGPT Fix Region (code)"
+	  (call-interactively 'chatgpt-fix-region)
+	  :help "asks ChatGPT to explain whats wrong with region."
+	  :active t
+	  :visible t
+	  ]
+	 [
+	  "ChatGPT Explain Region (code)"
+	  (call-interactively 'chatgpt-explain-region)
+	  :help "asks ChatGPT to explain what it does."
+	  :active t
+	  :visible t
+	  ]
+	 [
+	  "ChatGPT Tests For Region (code)"
+	  (call-interactively 'chatgpt-gen-tests-for-region)
+	  :help "asks ChatGPT to to write tests for region."
+	  :active t
+	  :visible t
+	  ]
+	 [
+	  "ChatGPT Refactor Region (code)"
+	  (call-interactively 'chatgpt-refactor-region)
+	  :help "asks ChatGPT to refactor region."
+	  :active t
+	  :visible t
+	  ]
+	 [
+	  "ChatGPT Prompt Region (Any)"
+	  (call-interactively 'chatgpt-prompt-region)
+	  :help "asks ChatGPT to prompt region."
+	  :active t
+	  :visible t
+	  ]
+	 [
+	  "ChatGPT Prompt Region And Replace (Any)"
+	  (call-interactively 'chatgpt-prompt-region-and-replace)
+	  :help "Replace region with the response from the ChatGPT."
+	  :active t
+	  :visible t
+	  ]
+
 	 ,(s-- 7)
 	 ,(s-- 8)
 	 ))
@@ -73,4 +115,4 @@
     ))
 
 
-(provide 'chatGpt-menu)
+(provide 'chatGptInv-menu)

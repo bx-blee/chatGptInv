@@ -17,6 +17,7 @@
 
 ;; Author: Gavin Jaeger-Freeborn <gavinfreeborn@gmail.com>
 ;; Maintainer: Gavin Jaeger-Freeborn <gavinfreeborn@gmail.com>
+;; Minor modifications: Mohsen Banan <emacs@mohsen.1.banan.byname.net>
 ;; Created: 2022
 ;; Version: 0.34
 ;; Package-Requires: ((emacs "28.1"))
@@ -62,6 +63,7 @@
 	    (called-interactively-p 'interactive))
        (lambda (&optional buf) (ignore buf)
          (with-current-buffer buf
+           (save-excursion (fill-region (point-min) (point-max)))
            (view-mode t))
          (switch-to-buffer-other-window chatgpt-buffer))
      #'identity))
@@ -72,7 +74,8 @@
 Returns buffer containing the text from this query"
   (interactive (list (read-string "Prompt ChatGPT with: ")
                      (lambda (buf) (with-current-buffer buf
-                                (view-mode t))
+                                     (save-excursion (fill-region (point-min) (point-max)))
+                                     (view-mode t))
                        (switch-to-buffer-other-window chatgpt-buffer))))
   (chatgpt--query-open-api prompt
                            (lambda (results)
@@ -83,6 +86,17 @@ Returns buffer containing the text from this query"
                                (insert results)
                                ;; Return the chatgpt output buffer for non interactive usage
                                (funcall callback (current-buffer))))))
+
+(defun chatgpt-rewrite-region (BEG END)
+  "Takes a region BEG to END asks ChatGPT to rewrite the region.
+The answer in the displays in `chatgpt-buffer'."
+  (interactive "r")
+  (let ((current-code (buffer-substring BEG END)))
+    (chatgpt-prompt (chatgpt--append-to-prompt
+                     current-code
+                     "Rewrite")
+                    (chatgpt-show-results-buffer-if-active))))
+
 
 ;;;###autoload
 (defun chatgpt-fix-region (BEG END)
@@ -95,20 +109,10 @@ It then displays the answer in the `chatgpt-buffer'."
                      "Why doesn't this code work?")
                     (chatgpt-show-results-buffer-if-active))))
 
-(defun chatgpt-rewrite-region (BEG END)
-  "Takes a region BEG to END asks ChatGPT what it does.
-The answer in the displays in `chatgpt-buffer'."
-  (interactive "r")
-  (let ((current-code (buffer-substring BEG END)))
-    (chatgpt-prompt (chatgpt--append-to-prompt
-                     current-code
-                     "Rewrite")
-                    (chatgpt-show-results-buffer-if-active))))
-
 
 ;;;###autoload
 (defun chatgpt-explain-region (BEG END)
-  "Takes a region BEG to END asks ChatGPT what it does.
+  "Takes a region BEG to END asks ChatGPT to explain what it does.
 The answer in the displays in `chatgpt-buffer'."
   (interactive "r")
   (let ((current-code (buffer-substring BEG END)))

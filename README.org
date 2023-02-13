@@ -1,12 +1,18 @@
 * ChatGPT Invoker Emacs interface
 
-Chat GPT is awsome and there has been and there will be more emacs packages
+ChatGPT is awsome and there has been and there will be more emacs packages
 that provide interfaces to it.
 
 In February of 2023, I, Mohsen BANAN, tried to get something working for myself.
+What I ended up with is a temporary solution that lets me use ChatGPT in a very
+basic way. For now it is just a bandaid and it is not clean.
+
+Over the next several months I expect that much cleaner emacs packages will be
+produced. At which time, I'll switch.
+
 Here is a summary of my journey.
 
-This packaging has only bgeen tested with Blee.
+This packaging has only been tested with Blee.
 
 In order to have it work with vanila emacs or Doom or etc, you may have to
 modify various things and you are on your own for that.
@@ -34,12 +40,28 @@ It worked for me. But it was not packaged and like the other two did not have a
 a menu. So, I have packaged it here and have added a menu to it as well.
 
 The ./chatgpt.el i sessentially a copy of Gavin's.
+Here are the things that I added:
+- The end result buffer is now subjected to a fill-region
+- There is top level menu, that makes it easier to use.
 
 * Package installation
 
 ** Blee Installation
 
+#+begin_src
+    (b:pkg:straight|profiledInstall
+       b:pkgsProfile:native
+     '(chatGptInv :type git :host github :repo "bx-blee/chatGptInv"))))
+#+end_src
+
 ** Straight Installation
+
+#+begin_src
+(use-package chatGptInv
+  :straight (:host github :repo "bx-blee/chatGptInv"))
+#+end_src
+
+But, I have not tested it. It may not work.
 
 
 *  🔑 Obtaining API key
