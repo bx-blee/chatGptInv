@@ -1,0 +1,4 @@
+(bidi-menu
+  :fetcher github
+  :repo "bx-blee/bidi-menu"
+  :files ("*.el"))

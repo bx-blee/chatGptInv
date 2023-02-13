@@ -1,0 +1,61 @@
+* ChatGPT Invoker Emacs interface
+
+Chat GPT is awsome and there has been and there will be more emacs packages
+that provide interfaces to it.
+
+In February of 2023, I, Mohsen BANAN, tried to get something working for myself.
+Here is a summary of my journey.
+
+This packaging has only bgeen tested with Blee.
+
+In order to have it work with vanila emacs or Doom or etc, you may have to
+modify various things and you are on your own for that.
+
+* List Of Existing  ChatGPT Invoker Emacs interfaces
+
+As of Feb 2023, the following packages were located.
+
+** https://github.com/joshcho/ChatGPT.el --- With Python chatgpt-wrapper
+
+I pip installed the python side and got the python chatgpt to work.
+
+The elisp interface to epc, did not work for me. It just hung.
+
+For integration of service invokers into emacs, I like the external python
+approach best. So, I will likely be coming back to this later.
+
+** https://github.com/emacs-openai/codegpt --- With OpenAI library
+
+Tried that and it did not work for me.
+
+** Gavin Jaeger-Freeborn  https://gist.github.com/Gavinok/a18e0b2dac74e4ae67df35e45a170f7f
+
+It worked for me. But it was not packaged and like the other two did not have a
+a menu. So, I have packaged it here and have added a menu to it as well.
+
+The ./chatgpt.el i sessentially a copy of Gavin's.
+
+* Package installation
+
+** Blee Installation
+
+** Straight Installation
+
+
+*  🔑 Obtaining API key
+
+To use this extension, you will need an API key from OpenAI. To obtain one,
+follow these steps:
+
+1. Go to [[https://beta.openai.com/account/api-keys]] If you
+don't have an account, you will need to create one or sign up using your Google
+or Microsoft account.
+2. Click on the `Create new secret key` button.
+3. Copy the key and paste into the 'API Key' field under the 'openai' custom group settings.
+4. export OPENAI_API_KEY="theKeyGoesHere"
+
+When you create a new account, you receive $18 in free credits for the API which
+you must use in the first 90 days. You can see pricing information
+[[https://openai.com/api/pricing/]]. 1000 tokens are about 700 words, and
+you can see the token count for each request at the end of the response in the
+sidebar.
