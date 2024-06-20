@@ -57,6 +57,20 @@
 	  :visible t
 	  ]
 	 [
+	  "ChatGPT Proofread Region (text)"
+	  (call-interactively 'chatgpt-proofread-region)
+	  :help "asks ChatGPT to proofread  the region."
+	  :active t
+	  :visible t
+	  ]
+	 [
+	  "ChatGPT Grammar Check Region (text)"
+	  (call-interactively 'chatgpt-grammarCheck-region)
+	  :help "asks ChatGPT to rewrite the region."
+	  :active t
+	  :visible t
+	  ]
+	 [
 	  "ChatGPT Fix Region (code)"
 	  (call-interactively 'chatgpt-fix-region)
 	  :help "asks ChatGPT to explain whats wrong with region."

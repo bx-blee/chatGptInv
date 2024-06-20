@@ -97,6 +97,25 @@ The answer in the displays in `chatgpt-buffer'."
                      "Rewrite")
                     (chatgpt-show-results-buffer-if-active))))
 
+(defun chatgpt-grammarChack-region (BEG END)
+  "Takes a region BEG to END asks ChatGPT to Grammar Check the region.
+The answer in the displays in `chatgpt-buffer'."
+  (interactive "r")
+  (let ((current-code (buffer-substring BEG END)))
+    (chatgpt-prompt (chatgpt--append-to-prompt
+                     current-code
+                     "Grammar check:")
+                    (chatgpt-show-results-buffer-if-active))))
+
+(defun chatgpt-proofread-region (BEG END)
+  "Takes a region BEG to END asks ChatGPT to proofread the region.
+The answer in the displays in `chatgpt-buffer'."
+  (interactive "r")
+  (let ((current-code (buffer-substring BEG END)))
+    (chatgpt-prompt (chatgpt--append-to-prompt
+                     current-code
+                     "proofread:")
+                    (chatgpt-show-results-buffer-if-active))))
 
 ;;;###autoload
 (defun chatgpt-fix-region (BEG END)
