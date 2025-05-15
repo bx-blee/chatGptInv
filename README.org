@@ -1,3 +1,13 @@
+* OBSOLETED -- This Repo Is Kept For Historic Purposes. Don't Use It.
+
+By Now, <2025-05-14 Wed 19:47> , gptel and aidermacs are so advanced
+that what is in here is irrelevant.
+
+I have moved the little bit of useful that remains relevant to:
+
+ https://github.com/bx-blee/aiplus
+
+
 * ChatGPT Invoker Emacs interface
 
 ChatGPT is awsome and there has been and there will be more emacs packages
